@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.phetandroidprototype.data.CategoryEntity;
-import com.example.phetandroidprototype.data.SimulationEntity;
 
-import java.util.Arrays;
+import com.example.phetandroidprototype.data.Simulation;
+
 import java.util.List;
 
 public class SimulationListItemAdapter extends RecyclerView.Adapter<SimulationListItemAdapter.SimItemViewHolder> {
@@ -28,13 +27,13 @@ public class SimulationListItemAdapter extends RecyclerView.Adapter<SimulationLi
     }
 
     private final LayoutInflater mLayoutInflater;
-    private List<SimulationEntity>  mSimulationList;
+    private List<Simulation>  mSimulationList;
 
     public SimulationListItemAdapter( Context context ) {
         mLayoutInflater = LayoutInflater.from( context );
     }
 
-    void setSimulationList( List<SimulationEntity> sims ) {
+    void setSimulationList( List<Simulation> sims ) {
         mSimulationList = sims;
         notifyDataSetChanged();
     }
@@ -45,12 +44,32 @@ public class SimulationListItemAdapter extends RecyclerView.Adapter<SimulationLi
     }
 
     @Override public void onBindViewHolder( @NonNull SimItemViewHolder holder, int position ) {
-        SimulationEntity sim = mSimulationList.get( position );
-        holder.simName.setText( sim.getName() );
-        holder.categories.setText( String.format( "%d %d %d", sim.getCategoryPhetIds() ) );
+        if ( mSimulationList != null ) {
+            Simulation sim = mSimulationList.get(position);
+            holder.simName.setText(sim.getName());
+            if ( holder.categories.getVisibility() == View.GONE ) {
+                holder.categories.setVisibility( View.VISIBLE );
+            }
+            holder.categories.setText( "dummy category text" );
+            // holder.categories.setText(String.format("%d %d %d", sim.getCategoryPhetIds()));
+        } else {
+            // data not ready yet
+            holder.simName.setText( "Still waiting" );
+            holder.categories.setVisibility( View.GONE );
+        }
     }
 
     @Override public int getItemCount() {
-        return 0;
+        if ( mSimulationList != null ) {
+            return mSimulationList.size();
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public void setmSimulationList( List<Simulation> sims ) {
+        mSimulationList = sims;
+        notifyDataSetChanged();
     }
 }

@@ -1,18 +1,21 @@
 package com.example.phetandroidprototype.data;
 
 import android.content.Context;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database( entities = {CategoryEntity.class, SimCategoryRelation.class, SimulationEntity.class }, version = 1 )
+@Database( entities = {Category.class, JoinSimulationCategory.class, Simulation.class }, exportSchema = false, version = 1 )
 public abstract class PhetDatabase extends RoomDatabase {
     public abstract SimulationDao simulationDao();
+    public abstract CategoryDao categoryDao();
+    public abstract JoinSimulationCategoryDao simCategoryRelationDao();
 
     private static final String DB_NAME = "phetsims.db";
     private static volatile PhetDatabase INSTANCE = null;
 
-    synchronized static PhetDatabase get( Context ctx ) {
+    synchronized public static PhetDatabase get( Context ctx ) {
         if ( INSTANCE == null ) {
             INSTANCE = create( ctx, false );
         }
@@ -32,4 +35,19 @@ public abstract class PhetDatabase extends RoomDatabase {
 
         return ( b.build() );
     }
+
+//    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+//
+//        private final SimulationDao simulationDao;
+//
+//        PopulateDbAsync( PhetDatabase db ) {
+//            simulationDao = db.simulationDao();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            simulationDao.deleteAll();
+//            return null;
+//        }
+//    }
 }

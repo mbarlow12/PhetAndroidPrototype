@@ -9,7 +9,7 @@ import java.util.List;
 public class SimulationRepo {
 
     private SimulationDao simulationDao;
-    private LiveData<List<SimulationEntity>> simulations;
+    private LiveData<List<Simulation>> simulations;
 
     public SimulationRepo( Application app ) {
         PhetDatabase db = PhetDatabase.get( app );
@@ -17,22 +17,22 @@ public class SimulationRepo {
         simulations = simulationDao.getAllSimulations();
     }
 
-    public LiveData<List<SimulationEntity>> getAllSimulations() {
+    public LiveData<List<Simulation>> getAllSimulations() {
         return simulations;
     }
 
-    public void insert( SimulationEntity sim ) {
+    public void insert( Simulation sim ) {
         new insertAsyncTask( simulationDao ).execute( sim );
     }
 
-    private static class insertAsyncTask extends AsyncTask<SimulationEntity, Void, Void > {
+    private static class insertAsyncTask extends AsyncTask<Simulation, Void, Void > {
         private SimulationDao simulationDao;
 
         insertAsyncTask( SimulationDao simulationDao ) {
             this.simulationDao = simulationDao;
         }
 
-        @Override protected Void doInBackground( SimulationEntity... simulationEntities ) {
+        @Override protected Void doInBackground( Simulation... simulationEntities ) {
             simulationDao.insert( simulationEntities[ 0 ] );
             return null;
         }
