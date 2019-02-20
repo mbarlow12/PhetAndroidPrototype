@@ -1,11 +1,7 @@
-package com.example.phetandroidprototype.data;
+package com.example.phetandroidprototype.db.entity;
 
-import java.util.UUID;
-
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity( tableName = "categories")

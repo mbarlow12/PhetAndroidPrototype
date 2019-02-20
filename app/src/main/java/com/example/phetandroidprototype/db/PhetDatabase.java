@@ -1,21 +1,31 @@
-package com.example.phetandroidprototype.data;
+package com.example.phetandroidprototype.db;
 
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import com.example.phetandroidprototype.db.dao.CategoryDao;
+import com.example.phetandroidprototype.db.dao.JoinSimulationCategoryDao;
+import com.example.phetandroidprototype.db.dao.SimulationDao;
+import com.example.phetandroidprototype.db.entity.Category;
+import com.example.phetandroidprototype.db.entity.JoinSimulationCategory;
+import com.example.phetandroidprototype.db.entity.Simulation;
 
 @Database( entities = {Category.class, JoinSimulationCategory.class, Simulation.class }, exportSchema = false, version = 1 )
 public abstract class PhetDatabase extends RoomDatabase {
+
+    // data access objects
     public abstract SimulationDao simulationDao();
     public abstract CategoryDao categoryDao();
     public abstract JoinSimulationCategoryDao simCategoryRelationDao();
 
     private static final String DB_NAME = "phetsims.db";
+
+    // singleton pattern
     private static volatile PhetDatabase INSTANCE = null;
 
-    synchronized public static PhetDatabase get( Context ctx ) {
+    synchronized public static PhetDatabase getDatabase( Context ctx ) {
         if ( INSTANCE == null ) {
             INSTANCE = create( ctx, false );
         }

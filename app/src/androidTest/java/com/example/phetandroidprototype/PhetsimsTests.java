@@ -2,12 +2,11 @@ package com.example.phetandroidprototype;
 
 import android.content.Context;
 
-import com.example.phetandroidprototype.data.Category;
-import com.example.phetandroidprototype.data.JoinSimulationCategory;
-import com.example.phetandroidprototype.data.PhetDatabase;
-import com.example.phetandroidprototype.data.Simulation;
+import com.example.phetandroidprototype.db.entity.Category;
+import com.example.phetandroidprototype.db.entity.JoinSimulationCategory;
+import com.example.phetandroidprototype.db.PhetDatabase;
+import com.example.phetandroidprototype.db.entity.Simulation;
 
-import androidx.room.Room;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -15,7 +14,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;

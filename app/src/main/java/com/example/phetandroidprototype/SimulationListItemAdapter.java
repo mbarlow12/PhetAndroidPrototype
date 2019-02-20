@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.phetandroidprototype.data.Simulation;
+import com.example.phetandroidprototype.db.entity.Simulation;
 
 import java.util.List;
 

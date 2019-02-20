@@ -1,11 +1,11 @@
-package com.example.phetandroidprototype;
+package com.example.phetandroidprototype.viewmodel;
 
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.phetandroidprototype.data.Simulation;
-import com.example.phetandroidprototype.data.SimulationRepo;
+import com.example.phetandroidprototype.SimulationRepo;
+import com.example.phetandroidprototype.db.entity.Simulation;
 
 import java.util.List;
 

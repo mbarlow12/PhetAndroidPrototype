@@ -1,13 +1,9 @@
-package com.example.phetandroidprototype.data;
+package com.example.phetandroidprototype.db.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static androidx.room.ColumnInfo.INTEGER;
 

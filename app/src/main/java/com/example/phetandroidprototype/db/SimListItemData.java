@@ -1,4 +1,4 @@
-package com.example.phetandroidprototype.data;
+package com.example.phetandroidprototype.db;
 
 import androidx.room.ColumnInfo;
 

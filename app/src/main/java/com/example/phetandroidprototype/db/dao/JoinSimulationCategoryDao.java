@@ -1,10 +1,13 @@
-package com.example.phetandroidprototype.data;
+package com.example.phetandroidprototype.db.dao;
 
 import java.util.List;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import com.example.phetandroidprototype.db.entity.Category;
+import com.example.phetandroidprototype.db.entity.JoinSimulationCategory;
+import com.example.phetandroidprototype.db.entity.Simulation;
 
 @Dao
 public interface JoinSimulationCategoryDao {
