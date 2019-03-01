@@ -1,12 +1,8 @@
-package com.example.phetandroidprototype.db.dao;
+package com.example.phetandroidprototype.data.source.local.dao;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import com.example.phetandroidprototype.db.SimListItemData;
-import com.example.phetandroidprototype.db.entity.Simulation;
+import androidx.room.*;
+import com.example.phetandroidprototype.data.source.local.entity.Simulation;
 
 import java.util.List;
 
@@ -31,21 +27,20 @@ public interface SimulationDao {
     @Delete
     void delete( Simulation sim );
 
+    @Update
+    void update( Simulation sim );
+
     // get all simulations
     @Query( "SELECT * FROM simulations ORDER BY name ASC" )
     LiveData<List<Simulation>> getAllSimulations();
-
-    // git list of limited simulation data (id, name)
-    @Query( "select phet_id, name from simulations order by name asc" )
-    LiveData<List<SimListItemData>> getSimListItemData();
 
     // delete all simulations
     @Query( "DELETE FROM simulations" )
     void deleteAll();
 
-    @Query( "SELECT simulations.* FROM simulations " +
-            "JOIN join_sim_category ON (simulations.phet_id = sim_id) " +
-            "JOIN simulationsFts ON (simulations.phet_id = simulationsFts.rowid) " +
-            "WHERE simulationsFts MATCH :query" )
-    LiveData<List<Simulation>> searchSimulations( String query );
+//    @Query( "SELECT simulations.* FROM simulations " +
+//            "JOIN join_sim_category ON (simulations.phet_id = sim_id) " +
+//            "JOIN simulationsFts ON (simulations.phet_id = simulations.rowid) " +
+//            "WHERE simulationsFts MATCH :query" )
+//    LiveData<List<Simulation>> searchSimulations( String query );
 }

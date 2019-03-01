@@ -1,4 +1,4 @@
-package com.example.phetandroidprototype.db.entity;
+package com.example.phetandroidprototype.data.source.local.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

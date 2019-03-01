@@ -2,10 +2,10 @@ package com.example.phetandroidprototype;
 
 import android.content.Context;
 
-import com.example.phetandroidprototype.db.entity.Category;
-import com.example.phetandroidprototype.db.entity.JoinSimulationCategory;
-import com.example.phetandroidprototype.db.PhetDatabase;
-import com.example.phetandroidprototype.db.entity.Simulation;
+import com.example.phetandroidprototype.data.source.local.entity.Category;
+import com.example.phetandroidprototype.data.source.local.entity.JoinSimulationCategory;
+import com.example.phetandroidprototype.data.source.local.PhetDatabase;
+import com.example.phetandroidprototype.data.source.local.entity.Simulation;
 
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;

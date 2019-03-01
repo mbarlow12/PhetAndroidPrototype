@@ -1,4 +1,4 @@
-package com.example.phetandroidprototype.db.dao;
+package com.example.phetandroidprototype.data.source.local.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import com.example.phetandroidprototype.db.entity.Category;
+import com.example.phetandroidprototype.data.source.local.entity.Category;
 
 @Dao
 public interface CategoryDao {

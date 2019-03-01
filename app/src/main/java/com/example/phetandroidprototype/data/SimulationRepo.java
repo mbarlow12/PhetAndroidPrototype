@@ -1,23 +1,30 @@
-package com.example.phetandroidprototype;
+package com.example.phetandroidprototype.data;
 
 import android.app.Application;
 import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
-import com.example.phetandroidprototype.db.PhetDatabase;
-import com.example.phetandroidprototype.db.dao.SimulationDao;
-import com.example.phetandroidprototype.db.entity.Simulation;
+import com.example.phetandroidprototype.data.source.local.PhetDatabase;
+import com.example.phetandroidprototype.data.source.local.dao.SimulationDao;
+import com.example.phetandroidprototype.data.source.local.entity.Simulation;
 
 import java.util.List;
 
 public class SimulationRepo {
 
+    private static SimulationRepo INSTANCE = null;
     private SimulationDao mSimulationDao;
     private LiveData<List<Simulation>> mSimulations;
 
-    SimulationRepo( Application app ) {
+    private SimulationRepo( Application app ) {
         PhetDatabase db = PhetDatabase.getDatabase( app );
         mSimulationDao = db.simulationDao();
         mSimulations = mSimulationDao.getAllSimulations();
+    }
+
+    public static SimulationRepo getInstance( Application app ) {
+        if ( INSTANCE == null ) {
+            INSTANCE = new SimulationRepo( app );
+        }
     }
 
     public LiveData<List<Simulation>> getAllSimulations() {

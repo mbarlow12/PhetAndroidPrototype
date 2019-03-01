@@ -2,6 +2,7 @@ package com.example.phetandroidprototype;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
+        FragmentTransaction transaction;
         mTextMessage = (TextView) findViewById( R.id.message );
         BottomNavigationView navigation = (BottomNavigationView) findViewById( R.id.navigation );
         navigation.setOnNavigationItemSelectedListener( mOnNavigationItemSelectedListener );

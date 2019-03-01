@@ -1,16 +1,16 @@
-package com.example.phetandroidprototype.db;
+package com.example.phetandroidprototype.data.source.local;
 
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import com.example.phetandroidprototype.db.dao.CategoryDao;
-import com.example.phetandroidprototype.db.dao.JoinSimulationCategoryDao;
-import com.example.phetandroidprototype.db.dao.SimulationDao;
-import com.example.phetandroidprototype.db.entity.Category;
-import com.example.phetandroidprototype.db.entity.JoinSimulationCategory;
-import com.example.phetandroidprototype.db.entity.Simulation;
+import com.example.phetandroidprototype.data.source.local.dao.CategoryDao;
+import com.example.phetandroidprototype.data.source.local.dao.JoinSimulationCategoryDao;
+import com.example.phetandroidprototype.data.source.local.dao.SimulationDao;
+import com.example.phetandroidprototype.data.source.local.entity.Category;
+import com.example.phetandroidprototype.data.source.local.entity.JoinSimulationCategory;
+import com.example.phetandroidprototype.data.source.local.entity.Simulation;
 
 @Database( entities = {Category.class, JoinSimulationCategory.class, Simulation.class }, exportSchema = false, version = 1 )
 public abstract class PhetDatabase extends RoomDatabase {
